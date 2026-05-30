@@ -1,0 +1,6 @@
+{
+  "name": "المسلم الشامل",
+  "description": "المسلم الشامل: تطبيق إسلامي شامل يضم مواقيت الصلاة والأذن، اتجاه القبلة، القرآن الكريم، الأذكار، والسبحة الإلكترونية ومذكر تلاوة متكامل وحفظ حقوق الطبع والنشر.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
