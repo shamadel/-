@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:width="72dp"
-        android:height="72dp"
-        android:drawable="@drawable/app_icon_asset_1780142924485"
-        android:gravity="center" />
-</layer-list>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M54,20 C35.22,20 20,35.22 20,54 C20,72.78 35.22,88 54,88 C72.78,88 88,72.78 88,54 C88,35.22 72.78,20 54,20 Z M54,25 C66.45,25 76.92,32.86 81.01,43.83 L70.76,43.83 C67.43,36.42 60.1,31.42 51.52,31.42 C42.15,31.42 34.25,37.89 31.57,46.59 L25.43,41.48 C29.98,31.75 39.87,25 54,25 Z M54,83 C39.87,83 29.98,76.25 25.43,66.52 L31.57,61.41 C34.25,70.11 42.15,76.58 51.52,76.58 C60.1,76.58 67.43,71.58 70.76,64.17 L81.01,64.17 C76.92,75.14 66.45,83 54,83 Z" />
+</vector>

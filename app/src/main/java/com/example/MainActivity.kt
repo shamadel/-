@@ -6,19 +6,15 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.ui.*
 import com.example.ui.theme.MyApplicationTheme
@@ -37,18 +33,10 @@ class MainActivity : ComponentActivity() {
 
         enableEdgeToEdge()
         setContent {
-            val viewModel: ZadViewModel = viewModel()
-            val darkModeOverride by viewModel.darkModeOverride.collectAsStateWithLifecycle()
-            val selectedLanguage by viewModel.selectedLanguage.collectAsStateWithLifecycle()
+            val viewModel: FootballViewModel = viewModel()
 
-            // Resolve whether to use Light or Dark theme
-            val isDarkTheme = when (darkModeOverride) {
-                true -> true
-                false -> false
-                null -> androidx.compose.foundation.isSystemInDarkTheme()
-            }
-
-            MyApplicationTheme(darkTheme = isDarkTheme) {
+            // Athletic pitch-green theme styling
+            MyApplicationTheme { 
                 var selectedTabIndex by remember { mutableStateOf(0) }
 
                 Scaffold(
@@ -63,12 +51,9 @@ class MainActivity : ComponentActivity() {
                             tonalElevation = 8.dp
                         ) {
                             val navItems = listOf(
-                                Triple(Localization.get("prayers", selectedLanguage), Icons.Default.AccessTime, 0),
-                                Triple(Localization.get("quran", selectedLanguage), Icons.Default.Book, 1),
-                                Triple(Localization.get("azkar", selectedLanguage), Icons.Default.VolunteerActivism, 2),
-                                Triple(Localization.get("tasbih", selectedLanguage), Icons.Default.Adjust, 3),
-                                Triple(Localization.get("qibla", selectedLanguage), Icons.Default.Explore, 4),
-                                Triple(Localization.get("sync", selectedLanguage), Icons.Default.Settings, 5)
+                                Triple("اللاعبين", Icons.Default.People, 0),
+                                Triple("دليل التدريبات", Icons.Default.Sports, 1),
+                                Triple("التحليلات والمتابعة", Icons.Default.BarChart, 2)
                             )
 
                             navItems.forEach { item ->
@@ -88,7 +73,7 @@ class MainActivity : ComponentActivity() {
                                         Text(
                                             text = item.first,
                                             fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
-                                            fontSize = 9.sp,
+                                            fontSize = 11.sp,
                                             maxLines = 1,
                                             color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Gray
                                         )
@@ -110,16 +95,13 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxWidth()
                         ) {
                             when (selectedTabIndex) {
-                                0 -> PrayerTimesScreen(viewModel = viewModel)
-                                1 -> QuranScreen(viewModel = viewModel)
-                                2 -> DhikrScreen(viewModel = viewModel)
-                                3 -> TasbihScreen(viewModel = viewModel)
-                                4 -> CompassScreen(viewModel = viewModel)
-                                5 -> SyncScreen(viewModel = viewModel)
+                                0 -> PlayersScreen(viewModel = viewModel)
+                                1 -> TestsScreen(viewModel = viewModel)
+                                2 -> AnalyticsScreen(viewModel = viewModel)
                             }
                         }
                         
-                        // Integrated AdMob Banner at the bottom of every tab (Modern standard)
+                        // Integrated AdMob Banner at the bottom of screens
                         AdmobBanner(
                             modifier = Modifier
                                 .fillMaxWidth()
